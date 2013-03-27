@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130327201643) do
+ActiveRecord::Schema.define(:version => 20130327203615) do
 
   create_table "admin_catalogs", :force => true do |t|
     t.string   "nom"
@@ -20,6 +20,40 @@ ActiveRecord::Schema.define(:version => 20130327201643) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "admin_inputs", :force => true do |t|
+    t.string   "cod"
+    t.integer  "catalog_id"
+    t.integer  "product_id"
+    t.integer  "unit_id"
+    t.integer  "supplier_id"
+    t.string   "location"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "admin_inputs", ["catalog_id"], :name => "index_admin_inputs_on_catalog_id"
+  add_index "admin_inputs", ["product_id"], :name => "index_admin_inputs_on_product_id"
+  add_index "admin_inputs", ["supplier_id"], :name => "index_admin_inputs_on_supplier_id"
+  add_index "admin_inputs", ["unit_id"], :name => "index_admin_inputs_on_unit_id"
+
+  create_table "admin_outputs", :force => true do |t|
+    t.string   "cod"
+    t.integer  "catalog_id"
+    t.integer  "product_id"
+    t.integer  "unit_id"
+    t.decimal  "amount"
+    t.integer  "staff_id"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "admin_outputs", ["catalog_id"], :name => "index_admin_outputs_on_catalog_id"
+  add_index "admin_outputs", ["product_id"], :name => "index_admin_outputs_on_product_id"
+  add_index "admin_outputs", ["staff_id"], :name => "index_admin_outputs_on_staff_id"
+  add_index "admin_outputs", ["unit_id"], :name => "index_admin_outputs_on_unit_id"
 
   create_table "admin_products", :force => true do |t|
     t.integer  "catalog_id"
@@ -40,6 +74,14 @@ ActiveRecord::Schema.define(:version => 20130327201643) do
   add_index "admin_products", ["catalog_id"], :name => "index_admin_products_on_catalog_id"
   add_index "admin_products", ["supplier_id"], :name => "index_admin_products_on_supplier_id"
   add_index "admin_products", ["unit_id"], :name => "index_admin_products_on_unit_id"
+
+  create_table "admin_staffs", :force => true do |t|
+    t.string   "name"
+    t.integer  "phone"
+    t.string   "address"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "admin_suppliers", :force => true do |t|
     t.string   "name"
