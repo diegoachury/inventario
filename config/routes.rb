@@ -1,5 +1,10 @@
 Inventario::Application.routes.draw do
   namespace :admin do
+    resources :returns
+  end
+
+
+  namespace :admin do
     resources :outputs
   end
 
