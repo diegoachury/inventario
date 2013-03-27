@@ -1,42 +1,15 @@
 Inventario::Application.routes.draw do
   namespace :admin do
     resources :returns
-  end
-
-
-  namespace :admin do
     resources :outputs
-  end
-
-
-  namespace :admin do
     resources :inputs
-  end
-
-
-  namespace :admin do
     resources :staffs
-  end
-
-
-  namespace :admin do
     resources :products
-  end
-
-
-  namespace :admin do
     resources :suppliers
-  end
-
-
-  namespace :admin do
     resources :units
-  end
-
-
-  namespace :admin do
     resources :catalogs
   end
+
 
 
   # The priority is based upon order of creation:
